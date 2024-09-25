@@ -9,10 +9,10 @@ const selectedShapeDisplay = document.getElementById('selectedShape');
 
 let currentShape = '';
 
-const backBtn = document.createElement('button');
-backBtn.id = 'backBtn';
+let backBtn = document.createElement('button');
+backBtn.setAttribute("id",'backBtn');
 backBtn.textContent = 'Back';
-backBtn.style.display = 'none';
+backBtn.setAttribute("sytle","display:none");
 
 backBtn.addEventListener('click', function () {
     shapes.forEach(shape => {
