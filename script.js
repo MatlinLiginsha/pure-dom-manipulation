@@ -45,6 +45,7 @@ shapes.forEach(shape => {
 
         if (currentShape === 'triangle') {
             inputLabel.textContent = 'Enter base and height of the triangle:';
+            input2.style.display = 'inline';
         } else if (currentShape === 'circle') {
             inputLabel.textContent = 'Enter radius of the circle:';
             input2.style.display = 'none';
