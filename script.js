@@ -10,58 +10,62 @@ const selectedShapeDisplay = document.getElementById('selectedShape');
 let currentShape = '';
 
 let backBtn = document.createElement('button');
-backBtn.setAttribute("id",'backBtn');
+backBtn.setAttribute("id", 'backBtn');
 backBtn.textContent = 'Back';
-backBtn.setAttribute("sytle","display:none");
+backBtn.setAttribute("style", "display:none");
 
-backBtn.addEventListener('click', function () {
+backBtn.addEventListener('click', () => {
     shapes.forEach(shape => {
-        shape.style.display = 'flex';
+        shape.setAttribute('style', 'display: flex;');
     });
 
-    inputs.style.display = 'none';
+    inputs.setAttribute('style', 'display: none;');
     selectedShapeDisplay.textContent = '';
     inputLabel.textContent = '';
     input1.value = '';
     input2.value = '';
     result.textContent = '';
-    backBtn.style.display = 'none';
+    backBtn.setAttribute('style', 'display: none;');
 });
 
 inputs.append(backBtn);
 
 shapes.forEach(shape => {
-    shape.addEventListener('click', function () {
-        currentShape = this.getAttribute('data-shape');
+    shape.addEventListener('click', () => {
+        currentShape = shape.getAttribute('data-shape');
 
         shapes.forEach(s => {
             if (s !== shape) {
-                s.style.display = 'none';
+                s.setAttribute('style', 'display: none;');
             }
         });
 
-        inputs.style.display = 'block';
+        inputs.setAttribute('style', 'display: block;');
         selectedShapeDisplay.textContent = `Selected Shape: ${currentShape}`;
 
         if (currentShape === 'triangle') {
             inputLabel.textContent = 'Enter base and height of the triangle:';
-            input2.style.display = 'inline';
+            input2.setAttribute('style', 'display: inline;');
+            input1.setAttribute('placeholder', 'Enter base');
+            input2.setAttribute('placeholder', 'Enter height');
         } else if (currentShape === 'circle') {
             inputLabel.textContent = 'Enter radius of the circle:';
-            input2.style.display = 'none';
+            input2.setAttribute('style', 'display: none;');
+            input1.setAttribute('placeholder', 'Enter radius');
         } else if (currentShape === 'square') {
             inputLabel.textContent = 'Enter side of the square:';
-            input2.style.display = 'none';
+            input2.setAttribute('style', 'display: none;');
+            input1.setAttribute('placeholder', 'Enter side');
         }
 
         input1.value = '';
         input2.value = '';
         result.textContent = '';
-        backBtn.style.display = 'block';
+        backBtn.setAttribute('style', 'display: block;');
     });
 });
 
-calculateBtn.addEventListener('click', function () {
+calculateBtn.addEventListener('click', () => {
     const value1 = parseFloat(input1.value);
     const value2 = parseFloat(input2.value);
     let area = 0;
